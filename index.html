@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="읽은 책과 본 영화를 기록하고 다시 찾아보세요."
+    />
+    <title>책과 영화 기록장</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="page-header">
+        <p class="eyebrow">나만의 감상 노트</p>
+        <h1>책과 영화 기록장</h1>
+        <p class="intro">마음에 남은 이야기들을 차곡차곡 모아 보세요.</p>
+      </header>
+
+      <section class="panel form-panel" aria-labelledby="form-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">새로운 기록</p>
+            <h2 id="form-heading">기록을 남겨 보세요</h2>
+          </div>
+        </div>
+
+        <form id="record-form">
+          <div class="form-grid">
+            <label class="field">
+              <span>종류 <span class="required-mark" aria-hidden="true">*</span></span>
+              <select id="type" name="type" required>
+                <option value="book">책</option>
+                <option value="movie">영화</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>제목 <span class="required-mark" aria-hidden="true">*</span></span>
+              <input
+                id="title"
+                name="title"
+                type="text"
+                placeholder="제목을 입력해 주세요"
+                maxlength="120"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span id="creator-label">작가</span>
+              <input
+                id="creator"
+                name="creator"
+                type="text"
+                placeholder="이름을 입력해 주세요 (선택)"
+                maxlength="80"
+              />
+            </label>
+
+            <label class="field">
+              <span>날짜 <span class="required-mark" aria-hidden="true">*</span></span>
+              <input id="date" name="date" type="date" required />
+            </label>
+
+            <label class="field">
+              <span>별점 <span class="required-mark" aria-hidden="true">*</span></span>
+              <select id="rating" name="rating" required>
+                <option value="">별점을 선택해 주세요</option>
+                <option value="5">★★★★★ · 최고예요</option>
+                <option value="4">★★★★☆ · 좋았어요</option>
+                <option value="3">★★★☆☆ · 괜찮았어요</option>
+                <option value="2">★★☆☆☆ · 아쉬웠어요</option>
+                <option value="1">★☆☆☆☆ · 취향이 아니었어요</option>
+              </select>
+            </label>
+
+            <label class="field field-wide">
+              <span>한줄평</span>
+              <textarea
+                id="review"
+                name="review"
+                rows="3"
+                maxlength="240"
+                placeholder="기억하고 싶은 감상을 적어 주세요 (선택)"
+              ></textarea>
+            </label>
+          </div>
+
+          <p id="form-message" class="message" role="status" aria-live="polite"></p>
+
+          <div class="form-actions">
+            <button id="cancel-edit" class="button button-quiet" type="button" hidden>
+              수정 취소
+            </button>
+            <button id="submit-button" class="button button-primary" type="submit">
+              기록 저장
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="records-section" aria-labelledby="records-heading">
+        <div class="records-heading">
+          <div>
+            <p class="eyebrow">나의 모음</p>
+            <h2 id="records-heading">기록 목록</h2>
+          </div>
+          <label class="filter-field">
+            <span class="visually-hidden">기록 종류 필터</span>
+            <select id="filter" name="filter">
+              <option value="all">전체 기록</option>
+              <option value="book">책만 보기</option>
+              <option value="movie">영화만 보기</option>
+            </select>
+          </label>
+        </div>
+        <p id="storage-message" class="storage-message" role="alert" hidden></p>
+        <div id="record-list" class="record-list" aria-live="polite"></div>
+      </section>
+
+      <footer class="page-footer">
+        <p>기록은 이 브라우저에만 저장됩니다.</p>
+      </footer>
+    </main>
+  </body>
+</html>
